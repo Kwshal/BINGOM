@@ -4,7 +4,6 @@ import { updaterFunction } from "./db.js";
 const cells = document.querySelectorAll(".cell");
 const winStatus = document.getElementById("win-status");
 
-const strokeCount = document.getElementById("stroke-count");
 const instruction = document.getElementById("instruction");
 const resetBtn = document.getElementById("reset-btn");
 
@@ -16,23 +15,28 @@ let randomChars = [
 ]
 let currentFunc = "start";
 
-// resetBtn.onclick = () => {
-//     currentFunc == "start" ? init() : reset();
-// };
+// let specialNumsList = [1, 25, 11, 9];
+
+
+resetBtn.onclick = () => {
+    currentFunc == "start" ? init() : reset();
+};
 
 function init() {
     gameRunning = true;
+    shuffle();
     cells.forEach((cell) => {
         cell.addEventListener("click", clicked);
-
-        cell.style.color = "#999999";
+        cell.style.transition = `color ${cell.getAttribute("index") * 0.1}s`;
+        cell.style.color = "#8e8492ff";
+        // cell.textContent == 5 && (cell.style.color = "#4b4b4bff");
     });
     currentFunc = "reset";
     // resetBtn.innerHTML = "Reset";
     // winStatus.innerHTML = "reset";
     // instruction.style.color = "#666";
-    shuffle();
-
+    updaterFunction("");
+    won = false;
 }
 init();
 
@@ -96,28 +100,59 @@ function checkBingo() {
         [0, 6, 12, 18, 24],
         [4, 8, 12, 16, 20],
     ];
-
-    let iA = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
-
-    let strokeCount = 0;
-
-    winPatterns.forEach(pattern => {
-        if (pattern.every(index => iA[index])) {
-            strokeCount++;
+    let count = 0;
+    for (let i = 0; i < winPatterns.length; i++) {
+        let pattern = winPatterns[i];
+        let won = true;
+        for (let j = 0; j < pattern.length; j++) {
+            if (!cells[pattern[j]].classList.contains("clicked")) {
+                won = false;
+                break;
+            }
         }
-    });
-
-    // return strokeCount > (isUser ? userPatterns : computerPatterns);
-    // strokeCount == 5 ? won = true : won = false;
-
-    // if (won == true) {
-    if (strokeCount == 5) {
-        gameRunning = false;
-        winStatus.style.display = "block";
-        winStatus.innerHTML = "Bingo!";
+        if (won) {
+            count++;
+        }
     }
-    // console.log("w:" + w);
-    // console.log("$[0]:" + $[0].every((el) => el == "w"));
+    if (count >= 5) {
+        won = true;
+        gameRunning = false;
+        cells.forEach((cell) => {
+            // if (specialNumsList.includes(Number(cell.textContent))) {
+            //     cell.style.color = "#666699";
+                
+            // }
+            cell.style.pointerEvents = "none";
+        });
+        // instruction.style.color = "#666";
+        resetBtn.style.display = "inline";
+        winStatus.innerHTML = "Bingo!";
+        console.log("Congratulations! You won!");
+    }
+
+    
+
+    // let iA = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+
+    // let strokeCount = 0;
+
+    // winPatterns.forEach(pattern => {
+    //     if (pattern.every(index => iA[index])) {
+    //         strokeCount++;
+    //     }
+    // });
+
+    // // return strokeCount > (isUser ? userPatterns : computerPatterns);
+    // // strokeCount == 5 ? won = true : won = false;
+
+    // // if (won == true) {
+    // if (strokeCount == 5) {
+    //     gameRunning = false;
+    //     winStatus.style.display = "block";
+    //     winStatus.innerHTML = "Bingo!";
+    // }
+    // // console.log("w:" + w);
+    // // console.log("$[0]:" + $[0].every((el) => el == "w"));
 
 }
 

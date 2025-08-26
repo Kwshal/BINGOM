@@ -32,7 +32,7 @@ position: relative;
     background-color: transparent;
     gap: 2px;
     position: absolute;
-    background-color: lightgrey;
+    background-color: rgb(148, 150, 138);
     /* background: linear-gradient(45deg, #583c3c, #fabdbd, #405764); */
 }
 
@@ -49,6 +49,7 @@ position: relative;
     justify-content: center;
     align-items: center;
     color: transparent;
+    color: #ffdcdc;
     /* text-shadow: 2px 3px 4px #555; */
     position: relative;
     user-select: none;
@@ -80,31 +81,27 @@ h1 {
 
 #reset-btn {
     margin-top: 20px;
-    width: 300px;
-    height: 50px;
+    width: max-content;
+    height: max-content;
     display: inline;
     font-size: 40px;
     border: 3px solid lightgrey;
     border: none;
+    background-color: transparent;
     color: rgb(90, 90, 90);
     font-family: 'Comic Neue' Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-variant: small-caps;
+    display: none;
     /* border-radius: 10px; */
 }
 
-#reset-btn:hover {
-    /* translate: 10px 10px; */
-    background-color: #dfdfdf;
-    text-shadow: 0 0 15px white;
-    
-    border-radius: 50px;
-    /* text-shadow: 0 2px 2px black; */
-}
 #win-status {
     /* display: none; */
     /* position: absolute; */
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
+    /* color: #666699; */
     z-index: 9;
+    display: inline;
 }
 
 #instruction {

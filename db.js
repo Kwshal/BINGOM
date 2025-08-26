@@ -23,10 +23,12 @@ const dbRef = ref(db, 'bingom/num');
 
 onValue(dbRef, (snapshot) => {
     const data = snapshot.val();
+     // console.log(data);
     executerFunction(data);
 });
 
 let updaterFunction = (num) => {
+     // console.log(num);
     set(dbRef, num);
 
 }
