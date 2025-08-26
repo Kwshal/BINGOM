@@ -1,0 +1,51 @@
+cirle the # instead of crossing--
+ pros: easier to read #s
+ cons: not seems notebooky enough
+
+color scheme / pallete--
+ primary: lightgray
+ secondary: lightergray*
+
+! circling charaters instead of h1 telling
+! dblclick on any shell to reset single click to start 
+
+! cross this => circle
+checkBingo not working...
+
+Different numbers of the cells are a function button. for example,
+- pressing 1 will say: ek bhi nhi bna mera
+- pressing 11 will say: mera toh ek ban gya
+- pressing 24 will reset the game 
+- pressing 5 will check
+- pressing 5 again will reset the game
+
+
+
+"<br>" +
++ "<br>"
+
+
+MAKE LIBRARIES !!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NOTES: UNRELATED: the vowel language "consless";
+ extract only vowel and done:
+   fast food => "a-oo"
+   Egg => cap-E, Roll => cap-R, Momos => cap-M, Chowmean => cap-C
+
+RESERVED WORDS: Reset(snap);
+
+!! APP to CYPHER WA CODE TXT or vice-versa.
+
