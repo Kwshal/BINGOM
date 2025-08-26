@@ -1,5 +1,5 @@
 
-
+import { updaterFunction } from "./db.js";
 
 const cells = document.querySelectorAll(".cell");
 const winStatus = document.getElementById("win-status");
@@ -24,7 +24,7 @@ function init() {
     gameRunning = true;
     cells.forEach((cell) => {
         cell.addEventListener("click", clicked);
-        
+
         cell.style.color = "#999999";
     });
     currentFunc = "reset";
@@ -42,28 +42,39 @@ function shuffle() {
     randomize(cells, randomChars);
 };
 
-
+// const 
 function clicked() {
-let circle = document.createElement("span");
-circle.id = "circle";
+    let circle = document.createElement("span");
+    circle.id = "circle";
 
     gameRunning = true;
     if (!this.classList.contains("clicked")) {
 
-        
-    this.classList.add("clicked");
-    let index = this.getAttribute("index");
-    this.appendChild(circle);
-    this.style.color = "#666";
-    iA[index] = "w";
-    checkBingo();
+
+        this.classList.add("clicked");
+        // let index = this.getAttribute("index");
+        this.appendChild(circle);
+        this.style.color = "#666";
+        updaterFunction(this.textContent);
+        // iA[index] = "w";
+        checkBingo();
     }
     // this.style.pointerEvents = "none";
     // instruction.style.color = "transparent";
-    // console.log($);
+    // console.log(this.textContent);
     // console.log(iA);
 
 }
+
+function executerFunction(num) {
+    cells.forEach((cell) => {
+        if (cell.textContent == num && !cell.classList.contains("clicked")) {
+            cell.click();
+        }
+    });
+}
+
+
 
 let iA = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
@@ -115,8 +126,8 @@ function reset() {
         cell.style.pointerEvents = "all";
         cell.style.color = "transparent";
     });
-    resetBtn.innerText = "Start";
-    currentFunc = "start";
+    // resetBtn.innerText = "Start";
+    // currentFunc = "start";
     // winStatus.innerHTML = "start";
     instruction.style.color = "transparent";
 }
@@ -136,7 +147,7 @@ function randomize(list, randomNum) {
 
 }
 
-
+export { executerFunction };
 
 
 
