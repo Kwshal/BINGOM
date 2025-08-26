@@ -123,6 +123,7 @@ function checkBingo() {
                 
             // }
             cell.style.pointerEvents = "none";
+            
         });
         // instruction.style.color = "#666";
         resetBtn.style.display = "inline";
@@ -160,6 +161,7 @@ function reset() {
     cells.forEach((cell) => {
         cell.style.pointerEvents = "all";
         cell.style.color = "transparent";
+        cell.innerHTML = "";
     });
     // resetBtn.innerText = "Start";
     // currentFunc = "start";
