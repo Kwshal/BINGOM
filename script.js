@@ -158,10 +158,12 @@ function checkBingo() {
 }
 
 function reset() {
+    
     cells.forEach((cell) => {
+        let circle = cell.querySelector("#circle");
         cell.style.pointerEvents = "all";
         cell.style.color = "transparent";
-        cell.innerHTML = "";
+        circle && (cell.removeChild(circle));
     });
     // resetBtn.innerText = "Start";
     // currentFunc = "start";
