@@ -1,5 +1,5 @@
 
-import { updaterFunction } from "./db.js";
+import { updaterFunction, msgFunction } from "./db.js";
 
 const cells = document.querySelectorAll(".cell");
 const winStatus = document.getElementById("win-status");
@@ -219,20 +219,22 @@ function toogleChat() {
 function sendText(e) {
     if (e.key == "Enter") {
         let text = chatInp.value;
-        let li = document.createElement("li");
-        li.id = "message";
-        text.trim() != "" && (li.innerHTML = text);
-        document.getElementById("chat-messages").appendChild(li);
+        text.trim() && msgFunction(text);
         chatInp.value = "";
     }
+}
+
+function msgUpdaterFunction(msg) {
+    let li = document.createElement("li");
+    li.id = "message";
+    li.innerHTML = msg;
+    document.getElementById("chat-messages").appendChild(li);
 }
 
 
 
 
-
-
-export { executerFunction };
+export { executerFunction, msgUpdaterFunction };
 
 
 

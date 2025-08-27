@@ -131,7 +131,7 @@ body {
 .cell {
 
     /* box-sizing: border-box; */
-    font-size: clamp(20px, 40px, 40px);
+    font-size: clamp(20px, 35px, 40px);
     font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 900;
     height: 100%;

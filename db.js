@@ -1,4 +1,4 @@
-import { executerFunction } from "./script.js";
+import { executerFunction, msgUpdaterFunction } from "./script.js";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
@@ -20,12 +20,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const dbRef = ref(db, 'bingom/num');
+const dbRef2 = ref(db, 'bingom/msgs');
 
-onValue(dbRef, (snapshot) => {
-    const data = snapshot.val();
-     // console.log(data);
-    executerFunction(data);
-});
 
 let updaterFunction = (num) => {
      // console.log(num);
@@ -33,4 +29,19 @@ let updaterFunction = (num) => {
 
 }
 
-export { updaterFunction };
+let msgFunction = (msg) => {
+    set(dbRef2, msg);
+}
+
+onValue(dbRef, (snapshot) => {
+    const data = snapshot.val();
+     // console.log(data);
+    executerFunction(data);
+});
+
+onValue(dbRef2, (snapshot) => {
+    const data = snapshot.val();
+    msgUpdaterFunction(data);
+});
+
+export { updaterFunction, msgFunction };
