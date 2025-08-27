@@ -194,18 +194,26 @@ function randomize(list, randomNum) {
 
 }
 
-// let chatBtn = document.getElementById("chat-btn");
-// chatBtn.addEventListener("click", toogleChat);
-
 let chatInp = document.getElementById("chat-inp");
+let chatBtn = document.getElementById("chat-btn");
+chatBtn.addEventListener("click", 
+    () => {
+        // chatInp.focus();
+        // toogleChat();
+        if (document.activeElement != chatInp) chatInp.focus();
+        else if(document.activeElement == chatInp) chatInp.blur();
+    }
+);
+
 chatInp.addEventListener("blur", toogleChat);
 chatInp.addEventListener("focus", toogleChat);
 chatInp.addEventListener("keypress", sendText);
 
 function toogleChat() {
     let chat = document.getElementById("chat-box");
-    chat.style.bottom = chat.style.bottom == "0%" ? "-40%" : "0%";
-    gameBoard.style.filter = gameBoard.style.filter == "blur(2px) opacity(0.5)" ? "blur(0px) opacity(1)" : "blur(2px) opacity(0.5)";
+    chat.style.bottom = chat.style.bottom == "0%" ? "-100%" : "0%";
+    // chatInp.focus();
+    // gameBoard.style.filter = gameBoard.style.filter == "blur(2px) opacity(0.5)" ? "blur(0px) opacity(1)" : "blur(2px) opacity(0.5)";
 }
 
 function sendText(e) {
@@ -213,7 +221,7 @@ function sendText(e) {
         let text = chatInp.value;
         let li = document.createElement("li");
         li.id = "message";
-        li.innerHTML = text;
+        text.trim() != "" && (li.innerHTML = text);
         document.getElementById("chat-messages").appendChild(li);
         chatInp.value = "";
     }
