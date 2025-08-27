@@ -1,4 +1,4 @@
-import { executerFunction, msgUpdaterFunction } from "./script.js";
+import { executerFunction, msgUpdaterFunction, toogleChat } from "./script.js";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
@@ -21,6 +21,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const dbRef = ref(db, 'bingom/num');
 const dbRef2 = ref(db, 'bingom/msgs');
+const dbRef3 = ref(db, 'bingom/chatState');
 
 
 let updaterFunction = (num) => {
@@ -33,6 +34,11 @@ let msgFunction = (msg) => {
     set(dbRef2, msg);
 }
 
+let chatStateUpdater = (val) => {
+    set(dbRef3, val);
+}
+// chatStateUpdater("close");
+
 onValue(dbRef, (snapshot) => {
     const data = snapshot.val();
      // console.log(data);
@@ -42,6 +48,13 @@ onValue(dbRef, (snapshot) => {
 onValue(dbRef2, (snapshot) => {
     const data = snapshot.val();
     msgUpdaterFunction(data);
+    
 });
 
-export { updaterFunction, msgFunction };
+onValue(dbRef3, (snapshot) => {
+    const data = snapshot.val();
+    toogleChat(data);
+    // console.log(data);
+});
+
+export { updaterFunction, msgFunction, chatStateUpdater };

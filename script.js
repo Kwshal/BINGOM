@@ -1,5 +1,5 @@
 
-import { updaterFunction, msgFunction } from "./db.js";
+import { updaterFunction, msgFunction, chatStateUpdater} from "./db.js";
 
 const cells = document.querySelectorAll(".cell");
 const winStatus = document.getElementById("win-status");
@@ -206,13 +206,15 @@ chatBtn.addEventListener("click",
     }
 );
 
-chatInp.addEventListener("blur", toogleChat);
-chatInp.addEventListener("focus", toogleChat);
+chatInp.addEventListener("blur", () => chatStateUpdater("close"));
+chatInp.addEventListener("focus", () => chatStateUpdater("open"));
 chatInp.addEventListener("keypress", sendText);
 
-function toogleChat() {
+function toogleChat(chatState) {
     let chat = document.getElementById("chat-box");
-    chat.style.bottom = chat.style.bottom == "0%" ? "-100%" : "0%";
+    if(chatState == "open") chat.style.bottom = "0%";
+    else if(chatState == "close") chat.style.bottom = "-100%";
+    
     // chatInp.focus();
     // gameBoard.style.filter = gameBoard.style.filter == "blur(2px) opacity(0.5)" ? "blur(0px) opacity(1)" : "blur(2px) opacity(0.5)";
 }
@@ -235,7 +237,7 @@ function msgUpdaterFunction(msg) {
 
 
 
-export { executerFunction, msgUpdaterFunction };
+export { executerFunction, msgUpdaterFunction, toogleChat };
 
 
 if ("serviceWorker" in navigator) {
