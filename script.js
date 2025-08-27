@@ -33,6 +33,7 @@ function init() {
     // winStatus.innerHTML = "reset";
     // instruction.style.color = "#666";
     updaterFunction("");
+    msgFunction("");
     // won = false;
 }
 init();
