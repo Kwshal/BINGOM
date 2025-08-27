@@ -6,37 +6,34 @@ const winStatus = document.getElementById("win-status");
 
 const instruction = document.getElementById("instruction");
 const resetBtn = document.getElementById("reset-btn");
+const gameBoard = document.getElementById("game-board");
 
 let gameRunning = false;
-let won = false;
+// let won = false;
 
 let randomChars = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 ]
-let currentFunc = "start";
 
 // let specialNumsList = [1, 25, 11, 9];
 
 
-resetBtn.onclick = () => {
-    currentFunc == "start" ? init() : reset();
-};
+resetBtn.addEventListener("click", reset);
 
 function init() {
     gameRunning = true;
     shuffle();
     cells.forEach((cell) => {
-        cell.addEventListener("click", clicked);
+        cell.addEventListener("click", handleClick);
         cell.style.transition = `color ${cell.getAttribute("index") * 0.1}s`;
-        cell.style.color = "#8e8492ff";
+        cell.style.color = "#8e8492";
         // cell.textContent == 5 && (cell.style.color = "#4b4b4bff");
     });
-    currentFunc = "reset";
     // resetBtn.innerHTML = "Reset";
     // winStatus.innerHTML = "reset";
     // instruction.style.color = "#666";
     updaterFunction("");
-    won = false;
+    // won = false;
 }
 init();
 
@@ -47,9 +44,8 @@ function shuffle() {
 };
 
 // const 
-function clicked() {
-    let circle = document.createElement("span");
-    circle.id = "circle";
+function handleClick() {
+    let cross = `<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#777"></path> </g></svg>`;
 
     gameRunning = true;
     if (!this.classList.contains("clicked")) {
@@ -57,7 +53,7 @@ function clicked() {
 
         this.classList.add("clicked");
         // let index = this.getAttribute("index");
-        this.appendChild(circle);
+        this.innerHTML = cross;
         this.style.color = "#666";
         updaterFunction(this.textContent);
         // iA[index] = "w";
@@ -72,7 +68,7 @@ function clicked() {
 
 function executerFunction(num) {
     cells.forEach((cell) => {
-        if (cell.textContent == num && !cell.classList.contains("clicked")) {
+        if (cell.textContent == num && !cell.classList.contains("handleClick")) {
             cell.click();
         }
     });
@@ -114,24 +110,30 @@ function checkBingo() {
             count++;
         }
     }
+    let circle = document.createElement("span");
+    circle.id = "circle";
+
     if (count >= 5) {
-        won = true;
-        gameRunning = false;
+        // won = true;
+        // gameRunning = false;
+
         cells.forEach((cell) => {
             // if (specialNumsList.includes(Number(cell.textContent))) {
             //     cell.style.color = "#666699";
-                
+
             // }
+            (!cell.classList.contains("clicked")) && (cell.appendChild(circle.cloneNode()));
             cell.style.pointerEvents = "none";
-            
+
         });
         // instruction.style.color = "#666";
         resetBtn.style.display = "inline";
-        winStatus.innerHTML = "Bingo!";
+        winStatus.innerHTML = "B I N G O !";
+        winStatus.style.display = "inline";
         console.log("Congratulations! You won!");
     }
 
-    
+
 
     // let iA = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
@@ -158,17 +160,23 @@ function checkBingo() {
 }
 
 function reset() {
-    
+
     cells.forEach((cell) => {
         let circle = cell.querySelector("#circle");
-        cell.style.pointerEvents = "all";
-        cell.style.color = "transparent";
         circle && (cell.removeChild(circle));
+
+        cell.style.transition = "none";
+        cell.style.pointerEvents = "all";
+        cell.style.color = "#ffdcdc";
+        cell.classList.remove("clicked");
     });
+    init();
+    // this.style.display = "none";
+    winStatus.style.display = "none";
     // resetBtn.innerText = "Start";
     // currentFunc = "start";
     // winStatus.innerHTML = "start";
-    instruction.style.color = "transparent";
+    // instruction.style.color = "transparent";
 }
 
 function randomize(list, randomNum) {
@@ -185,6 +193,36 @@ function randomize(list, randomNum) {
     }
 
 }
+
+// let chatBtn = document.getElementById("chat-btn");
+// chatBtn.addEventListener("click", toogleChat);
+
+let chatInp = document.getElementById("chat-inp");
+chatInp.addEventListener("blur", toogleChat);
+chatInp.addEventListener("focus", toogleChat);
+chatInp.addEventListener("keypress", sendText);
+
+function toogleChat() {
+    let chat = document.getElementById("chat-box");
+    chat.style.bottom = chat.style.bottom == "0%" ? "-40%" : "0%";
+    gameBoard.style.filter = gameBoard.style.filter == "blur(2px) opacity(0.5)" ? "blur(0px) opacity(1)" : "blur(2px) opacity(0.5)";
+}
+
+function sendText(e) {
+    if (e.key == "Enter") {
+        let text = chatInp.value;
+        let li = document.createElement("li");
+        li.id = "message";
+        li.innerHTML = text;
+        document.getElementById("chat-messages").appendChild(li);
+        chatInp.value = "";
+    }
+}
+
+
+
+
+
 
 export { executerFunction };
 
