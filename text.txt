@@ -1,8 +1,6 @@
 
-Different numbers of the cells are a function button. -nhi
+tomorrow => names in the sessionStorage+Name/ pencil icon btn at top
 
-
-MAKE LIBRARIES !!!
 
 
 

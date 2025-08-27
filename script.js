@@ -34,6 +34,7 @@ function init() {
     // instruction.style.color = "#666";
     updaterFunction("");
     msgFunction("");
+    chatStateUpdater("close");
     // won = false;
 }
 init();
