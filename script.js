@@ -237,4 +237,7 @@ function msgUpdaterFunction(msg) {
 export { executerFunction, msgUpdaterFunction };
 
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js");
+}
 

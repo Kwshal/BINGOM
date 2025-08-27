@@ -15,6 +15,7 @@ body {
     flex-direction: column;
     /* justify-content: center; */
     gap: 10px;
+    padding-top: 10px;
     align-items: center;
     /* background: linear-gradient(45deg, #e0b7b7, #c1e9c4, #d8b4dd); */
     background-size: 400% 400%;
