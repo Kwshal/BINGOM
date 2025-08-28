@@ -1,4 +1,4 @@
-import { updateNums, msgFunction, chatStateUpdater } from "./db.js";
+import { updateNums, msgFunction, chatStateUpdater, setWinner } from "./db.js";
 
 const cells = document.querySelectorAll(".cell");
 const winStatus = document.getElementById("win-status");
@@ -34,6 +34,8 @@ function init() {
     updateNums("");
     msgFunction("");
     chatStateUpdater("close");
+    setWinner("");
+    winStatus.style.top = "-100%";
     // won = false;
 }
 init();
@@ -129,34 +131,18 @@ function checkBingo() {
         });
         // instruction.style.color = "#4e6d81";
         resetBtn.style.display = "inline";
-        winStatus.innerHTML = "B I N G O !";
-        winStatus.style.display = "inline";
-        console.log("Congratulations! You won!");
+        winStatus.innerHTML = "You Win!";
+
+        winStatus.style.top = "5%";
+        // console.log("Congratulations! You won!");
+        chatStateUpdater("open");
+        msgFunction(`<span id="username">${username}:</span> BINGO! I win!!`);
+        setWinner(username);
+        // let shadow = document.querySelector("#game-board::after");
+        // shadow.style.display = "block";
     }
 
 
-
-    // let iA = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
-
-    // let strokeCount = 0;
-
-    // winPatterns.forEach(pattern => {
-    //     if (pattern.every(index => iA[index])) {
-    //         strokeCount++;
-    //     }
-    // });
-
-    // // return strokeCount > (isUser ? userPatterns : computerPatterns);
-    // // strokeCount == 5 ? won = true : won = false;
-
-    // // if (won == true) {
-    // if (strokeCount == 5) {
-    //     gameRunning = false;
-    //     winStatus.style.display = "block";
-    //     winStatus.innerHTML = "Bingo!";
-    // }
-    // // console.log("w:" + w);
-    // // console.log("$[0]:" + $[0].every((el) => el == "w"));
 
 }
 
@@ -172,7 +158,8 @@ function reset() {
         cell.classList.remove("clicked");
     });
     init();
-    // this.style.display = "none";
+    msgFunction("Game Reset. New Round!");
+    // document.querySelector("#game-board::after").style.display = "none";
     winStatus.style.display = "none";
     // resetBtn.innerText = "Start";
     // currentFunc = "start";
@@ -212,9 +199,9 @@ chatInp.addEventListener("keypress", sendText);
 
 function toogleChat(chatState) {
     let chat = document.getElementById("chat-box");
-    if (chatState == "open") chat.style.bottom = "10%";
+    if (chatState == "open") chat.style.bottom = "5%";
     else if (chatState == "close") chat.style.bottom = "-500%";
-
+    // let chatInp = document.getElementById("chat-inp");
     // chatInp.focus();
     // gameBoard.style.filter = gameBoard.style.filter == "blur(2px) opacity(0.5)" ? "blur(0px) opacity(1)" : "blur(2px) opacity(0.5)";
 }
@@ -222,7 +209,13 @@ function toogleChat(chatState) {
 let username = localStorage.getItem("username") || "Nameless";
 
 document.addEventListener("DOMContentLoaded", () => {
-    username != "Nameless" && (document.getElementById("name").style.display = "none");
+    if (username != "Nameless") {
+        let name = document.getElementById("name");
+        name.textContent = username;
+        name.style.backgroundColor = "transparent";
+        name.style.color = "white";
+
+    }
 });
 
 let editSvg = document.getElementById("edit-svg");
@@ -254,10 +247,21 @@ function msgUpdaterFunction(msg) {
     msgFunction("");
 }
 
+function showWinner(winner) {
+    let username = localStorage.getItem("username") || "Nameless";
+    if (winner == username) {
+        winStatus.innerHTML = "You Win!";
+    } else if (winner && winner != username) {
+        winStatus.innerHTML = `${winner} Wins!`;
+    }
+}
+
+
+
 // HTML
 
 
-export { syncNums, msgUpdaterFunction, toogleChat };
+export { syncNums, msgUpdaterFunction, toogleChat, showWinner };
 
 
 
