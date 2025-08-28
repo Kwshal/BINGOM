@@ -1,4 +1,4 @@
-import { executerFunction, msgUpdaterFunction, toogleChat } from "./script.js";
+import { syncNums, msgUpdaterFunction, toogleChat } from "./script.js";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
@@ -7,13 +7,13 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-     apiKey: "AIzaSyABxgXrl0ZawYX4U_Bqpt9HRVgSaW1CA7k",
-     authDomain: "bingo-ace.firebaseapp.com",
-     databaseURL: "https://bingo-ace-default-rtdb.asia-southeast1.firebasedatabase.app",
-     projectId: "bingo-ace",
-     storageBucket: "bingo-ace.firebasestorage.app",
-     messagingSenderId: "932968616436",
-     appId: "1:932968616436:web:dbe017a0a451dcfde329a1"
+    apiKey: "AIzaSyABxgXrl0ZawYX4U_Bqpt9HRVgSaW1CA7k",
+    authDomain: "bingo-ace.firebaseapp.com",
+    databaseURL: "https://bingo-ace-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "bingo-ace",
+    storageBucket: "bingo-ace.firebasestorage.app",
+    messagingSenderId: "932968616436",
+    appId: "1:932968616436:web:dbe017a0a451dcfde329a1"
 };
 
 // Initialize Firebase
@@ -24,8 +24,8 @@ const dbRef2 = ref(db, 'bingom/msgs');
 const dbRef3 = ref(db, 'bingom/chatState');
 
 
-let updaterFunction = (num) => {
-     // console.log(num);
+let updateNums = (num) => {
+    // console.log(num);
     set(dbRef, num);
 
 }
@@ -41,14 +41,13 @@ let chatStateUpdater = (val) => {
 
 onValue(dbRef, (snapshot) => {
     const data = snapshot.val();
-     // console.log(data);
-    executerFunction(data);
+    // console.log(data);
+    syncNums(data);
 });
 
 onValue(dbRef2, (snapshot) => {
     const data = snapshot.val();
-    msgUpdaterFunction(data);
-    
+    data && msgUpdaterFunction(data);
 });
 
 onValue(dbRef3, (snapshot) => {
@@ -57,4 +56,4 @@ onValue(dbRef3, (snapshot) => {
     // console.log(data);
 });
 
-export { updaterFunction, msgFunction, chatStateUpdater };
+export { updateNums, msgFunction, chatStateUpdater };

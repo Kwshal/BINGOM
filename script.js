@@ -1,4 +1,4 @@
-import { updaterFunction, msgFunction, chatStateUpdater } from "./db.js";
+import { updateNums, msgFunction, chatStateUpdater } from "./db.js";
 
 const cells = document.querySelectorAll(".cell");
 const winStatus = document.getElementById("win-status");
@@ -31,7 +31,7 @@ function init() {
     // resetBtn.innerHTML = "Reset";
     // winStatus.innerHTML = "reset";
     // instruction.style.color = "#4e6d81";
-    updaterFunction("");
+    updateNums("");
     msgFunction("");
     chatStateUpdater("close");
     // won = false;
@@ -54,20 +54,20 @@ function handleClick() {
 
         this.classList.add("clicked");
         // let index = this.getAttribute("index");
+    console.log("clicked", this.textContent);
+        updateNums(this.textContent);
         this.innerHTML = cross;
-        this.style.color = "#4e6d81";
-        updaterFunction(this.textContent);
+        // this.style.color = "#4e6d81";
         // iA[index] = "w";
         checkBingo();
     }
     // this.style.pointerEvents = "none";
     // instruction.style.color = "transparent";
-    // console.log(this.textContent);
     // console.log(iA);
 
 }
 
-function executerFunction(num) {
+function syncNums(num) {
     cells.forEach((cell) => {
         if (cell.textContent == num && !cell.classList.contains("handleClick")) {
             cell.click();
@@ -232,12 +232,13 @@ function msgUpdaterFunction(msg) {
     li.id = "message";
     li.innerHTML = msg;
     document.getElementById("chat-messages").appendChild(li);
+    msgFunction("");
 }
 
 
 
 
-export { executerFunction, msgUpdaterFunction, toogleChat };
+export { syncNums, msgUpdaterFunction, toogleChat };
 
 
 
