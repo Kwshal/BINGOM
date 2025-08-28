@@ -212,17 +212,36 @@ chatInp.addEventListener("keypress", sendText);
 
 function toogleChat(chatState) {
     let chat = document.getElementById("chat-box");
-    if (chatState == "open") chat.style.bottom = "0%";
+    if (chatState == "open") chat.style.bottom = "10%";
     else if (chatState == "close") chat.style.bottom = "-500%";
 
     // chatInp.focus();
     // gameBoard.style.filter = gameBoard.style.filter == "blur(2px) opacity(0.5)" ? "blur(0px) opacity(1)" : "blur(2px) opacity(0.5)";
 }
 
+let username = localStorage.getItem("username") || "Nameless";
+
+document.addEventListener("DOMContentLoaded", () => {
+    username != "Nameless" && (document.getElementById("name").style.display = "none");
+});
+
+let editSvg = document.getElementById("edit-svg");
+editSvg.addEventListener("click", () => {
+    let name = document.getElementById("name");
+    name.contentEditable = true;
+    name.focus();
+    name.addEventListener("blur", () => {
+        // name.contentEditable = false;
+        username = name.textContent.trim() || "Nameless";
+        localStorage.setItem("username", username);
+        name.textContent = username;
+    });
+});
+
 function sendText(e) {
     if (e.key == "Enter") {
         let text = chatInp.value;
-        text.trim() && msgFunction(text);
+        text.trim() && msgFunction(`<span id="username">${username}</span>: ` + text);
         chatInp.value = "";
     }
 }
@@ -235,7 +254,7 @@ function msgUpdaterFunction(msg) {
     msgFunction("");
 }
 
-
+// HTML
 
 
 export { syncNums, msgUpdaterFunction, toogleChat };
