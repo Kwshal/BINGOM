@@ -39,7 +39,7 @@ body {
 
 #chat-box {
     width: 99%;
-    height: clamp(30%, 40%, 100%);
+    height: clamp(30%, 60%, 100%);
     background-color: #fff;
     border-radius: 25px 25px 0 0;
     overflow: hidden;
@@ -151,7 +151,9 @@ body {
 #reset-btn {
     width: 40px;
     height: 40px;
-    display: inline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 30px;
     /* border: 3px solid #777; */
     border: none;
@@ -192,6 +194,7 @@ body {
     /* gap: 10px; */
 }
 #chat-btn {
+
     height: 40px;
     width: 40px;
     display: flex;
