@@ -17,26 +17,10 @@ body {
     gap: 10px;
     padding-top: 10px;
     align-items: center;
-    /* background: linear-gradient(45deg, #e0b7b7, #c1e9c4, #d8b4dd); */
-    background-size: 400% 400%;
-    animation: gradientBG 5s ease infinite;
-        font-family: 'Comic Neue', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
+    background: linear-gradient(45deg, #e0b7b7, #c0f5e4);
+    font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
 
 #game-cont {
     height: clamp(300px, 340px, 600px);
@@ -55,7 +39,7 @@ body {
 
 #chat-box {
     width: 99%;
-    height: 50%;
+    height: clamp(30%, 40%, 100%);
     background-color: #fff;
     border-radius: 25px 25px 0 0;
     overflow: hidden;
@@ -64,7 +48,8 @@ body {
     /* border: 1px solid #000; */
     /* display: none; */
     box-shadow: 0px 2px 5px #bbb;
-    bottom: -100%;
+    bottom: -500%;
+    bottom: 0%;
     transition: bottom 0.2s;
 }
 #chat-box span {
@@ -83,12 +68,13 @@ body {
 #chat-messages {
     padding-left: 5px;
     height: 100%;
-    overflow-x: ellipsis;
+    /* overflow-x: ellipsis; */
     overflow-y: auto;
     /* border: 1px solid #000; */
 }
 
 .message {
+    height: auto;
     list-style: "none";
     padding-left: 5px !important;
     font-size: 30px;
@@ -96,6 +82,7 @@ body {
     font-weight: 700;
     color: #666;
     font-variant: small-caps !important;
+    overflow-wrap: break-all;
 }
 
 #util {
@@ -229,4 +216,18 @@ body {
     height: 80%;
     width: 80%;
     position: absolute;
+}
+
+#install-btn {
+    height: 40px;
+    padding: 5px 15px;
+    font-size: 20px;
+    font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+    color: #666;
+    background-color: white;
+    border: none;
+    border-radius: 55px;
+    display: none;
+    cursor: pointer;
 }

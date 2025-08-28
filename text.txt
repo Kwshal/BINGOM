@@ -9,8 +9,11 @@ tomorrow => names in the sessionStorage+Name/ pencil icon btn at top
 
 
 
+Lessons:
+--- Sometimes the service-worker keeps loading the stale html. 
+Fix? unregister it under application inside DevToils in chrome. 
 
-
+----only manifest.json is enough to install the app.
 
 
 

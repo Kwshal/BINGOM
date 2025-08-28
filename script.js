@@ -1,5 +1,4 @@
-
-import { updaterFunction, msgFunction, chatStateUpdater} from "./db.js";
+import { updaterFunction, msgFunction, chatStateUpdater } from "./db.js";
 
 const cells = document.querySelectorAll(".cell");
 const winStatus = document.getElementById("win-status");
@@ -26,7 +25,7 @@ function init() {
     cells.forEach((cell) => {
         cell.addEventListener("click", handleClick);
         cell.style.transition = `color ${cell.getAttribute("index") * 0.1}s`;
-        cell.style.color = "#8e8492";
+        cell.style.color = "#a2a4bdff";
         // cell.textContent == 5 && (cell.style.color = "#4b4b4bff");
     });
     // resetBtn.innerHTML = "Reset";
@@ -198,12 +197,12 @@ function randomize(list, randomNum) {
 
 let chatInp = document.getElementById("chat-inp");
 let chatBtn = document.getElementById("chat-btn");
-chatBtn.addEventListener("click", 
+chatBtn.addEventListener("click",
     () => {
         // chatInp.focus();
         // toogleChat();
         if (document.activeElement != chatInp) chatInp.focus();
-        else if(document.activeElement == chatInp) chatInp.blur();
+        else if (document.activeElement == chatInp) chatInp.blur();
     }
 );
 
@@ -213,9 +212,9 @@ chatInp.addEventListener("keypress", sendText);
 
 function toogleChat(chatState) {
     let chat = document.getElementById("chat-box");
-    if(chatState == "open") chat.style.bottom = "0%";
-    else if(chatState == "close") chat.style.bottom = "-100%";
-    
+    if (chatState == "open") chat.style.bottom = "0%";
+    else if (chatState == "close") chat.style.bottom = "-500%";
+
     // chatInp.focus();
     // gameBoard.style.filter = gameBoard.style.filter == "blur(2px) opacity(0.5)" ? "blur(0px) opacity(1)" : "blur(2px) opacity(0.5)";
 }
@@ -241,22 +240,30 @@ function msgUpdaterFunction(msg) {
 export { executerFunction, msgUpdaterFunction, toogleChat };
 
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/service-worker.js");
-}
+// if ("serviceWorker" in navigator) {
+//     navigator.serviceWorker.register("/service-worker.js");
+// }
 
 let deferredPrompt;
+document.addEventListener("DOMContentLoaded", () => {
+    let installBtn = document.getElementById("install-btn");
+    // console.log(installBtn);
+    installBtn.style.display = "none";
 
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  // Show your custom "Install" button
-  document.getElementById("installBtn").style.display = "block";
-
-  document.getElementById("installBtn").addEventListener("click", () => {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(() => {
-      deferredPrompt = null;
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtn.style.display = "inline";
     });
-  });
+
+    installBtn.addEventListener("click", () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => {
+                deferredPrompt = null;
+                installBtn.style.display = "none";
+            });
+        }
+    });
 });
+
