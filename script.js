@@ -25,7 +25,7 @@ function init() {
     cells.forEach((cell) => {
         cell.addEventListener("click", handleClick);
         cell.style.transition = `color ${cell.getAttribute("index") * 0.1}s`;
-        cell.style.color = "#a2a4bdff";
+        cell.style.color = "transparent";
         // cell.textContent == 5 && (cell.style.color = "#4b4b4bff");
     });
     // resetBtn.innerHTML = "Reset";

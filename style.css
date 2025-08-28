@@ -17,7 +17,8 @@ body {
     gap: 10px;
     padding-top: 10px;
     align-items: center;
-    background: linear-gradient(45deg, #e0b7b7, #c0f5e4);
+    /* background: linear-gradient(45deg, #e0b7b7, #c0f5e4); */
+    background: #596c79;
     font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -130,7 +131,7 @@ body {
     justify-content: center;
     align-items: center;
     color: transparent;
-    color: #ffdcdc;
+    /* color: #ffdcdc; */
     /* text-shadow: 2px 3px 4px #555; */
     position: relative;
     user-select: none;
@@ -139,11 +140,11 @@ body {
 
 #circle {
     box-sizing: border-box;
-    height: 85%;
-    width: 85%;
-    border: 5px solid #777;
+    height: 45%;
+    width: 45%;
+    /* border: 5px solid ; */
     border-radius: 50%;
-    background-color: transparent;
+    background-color: #777;
     position: absolute;
 }
 
@@ -212,6 +213,13 @@ body {
     outline: none;
     padding-right: 15px;
     background-color: white;
+}
+
+#chat-inp::placeholder {
+    color: #777;
+    font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 900;
+    /* font-size: 20px; */
 }
 
 #cross {
