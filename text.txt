@@ -14,6 +14,7 @@ Lessons:
 Fix? unregister it under application inside DevToils in chrome. 
 
 ----only manifest.json is enough to install the app.
+-- A single / was fucking up the app.
 
 
 
