@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 * {
     user-select: none;
     box-sizing: border-box;
@@ -53,6 +54,7 @@ body {
     bottom: 0%;
     transition: bottom 0.2s;
 }
+
 #chat-box span {
     /* font-size: 20px; */
     display: flex;
@@ -62,10 +64,11 @@ body {
     margin: 0;
     font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 700;
-    color: #666;
+    color: #4e6d81;
     font-size: 35px;
     font-variant: small-caps;
 }
+
 #chat-messages {
     padding-left: 5px;
     height: 100%;
@@ -81,7 +84,7 @@ body {
     font-size: 30px;
     font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 700;
-    color: #666;
+    color: #4e6d81;
     font-variant: small-caps !important;
     overflow-wrap: break-all;
 }
@@ -103,9 +106,9 @@ body {
     min-height: 330px; */
     height: 100%;
     width: 100%;
-    /* border-bottom: 1px dashed #777; */
+    /* border-bottom: 1px dashed #4e6d81; */
     /* background-color: #999; */
-    
+
     gap: 3px;
     position: absolute;
     /* padding: 20px; */
@@ -132,7 +135,7 @@ body {
     align-items: center;
     color: transparent;
     /* color: #ffdcdc; */
-    /* text-shadow: 2px 3px 4px #555; */
+    /* text-shadow: 2px 3px 4px #4e6d81; */
     position: relative;
     user-select: none;
     /* border-radius: 5px; */
@@ -144,7 +147,7 @@ body {
     width: 45%;
     /* border: 5px solid ; */
     border-radius: 50%;
-    background-color: #777;
+    background-color: #4e6d81;
     position: absolute;
 }
 
@@ -156,26 +159,28 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 30px;
-    /* border: 3px solid #777; */
+    /* border: 3px solid #4e6d81; */
     border: none;
     background-color: white;
-    color: #777;
+    color: #4e6d81;
     /* display: none; */
     border-radius: 25px;
 }
 
-#win-status, #name {
+#win-status,
+#name {
     /* height: 40px; */
     font-size: 40px;
     font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* font-weight: 700; */
-    color: #666;
+    color: #4e6d81;
     display: none;
     background-color: white;
     padding: 5px 15px;
     border-radius: 55px;
 
 }
+
 #name {
     display: flex;
     align-items: center;
@@ -186,7 +191,7 @@ body {
 #chat-btn-cont {
     display: flex;
     background-color: white;
-    
+
     width: 60%;
     height: 40px;
     /* padding: 5px 15px; */
@@ -194,6 +199,7 @@ body {
     overflow: hidden;
     /* gap: 10px; */
 }
+
 #chat-btn {
 
     height: 40px;
@@ -206,6 +212,7 @@ body {
     border-radius: 25px;
     border: none;
 }
+
 #chat-inp {
     height: 40px;
     width: 100%;
@@ -216,7 +223,7 @@ body {
 }
 
 #chat-inp::placeholder {
-    color: #777;
+    color: #4e6d81;
     font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 900;
     /* font-size: 20px; */
@@ -235,7 +242,7 @@ body {
     font-size: 20px;
     font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 700;
-    color: #666;
+    color: #4e6d81;
     background-color: white;
     border: none;
     border-radius: 55px;

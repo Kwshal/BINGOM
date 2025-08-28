@@ -30,7 +30,7 @@ function init() {
     });
     // resetBtn.innerHTML = "Reset";
     // winStatus.innerHTML = "reset";
-    // instruction.style.color = "#666";
+    // instruction.style.color = "#4e6d81";
     updaterFunction("");
     msgFunction("");
     chatStateUpdater("close");
@@ -46,7 +46,7 @@ function shuffle() {
 
 // const 
 function handleClick() {
-    let cross = `<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#777"></path> </g></svg>`;
+    let cross = `<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#4e6d81"></path> </g></svg>`;
 
     gameRunning = true;
     if (!this.classList.contains("clicked")) {
@@ -55,7 +55,7 @@ function handleClick() {
         this.classList.add("clicked");
         // let index = this.getAttribute("index");
         this.innerHTML = cross;
-        this.style.color = "#666";
+        this.style.color = "#4e6d81";
         updaterFunction(this.textContent);
         // iA[index] = "w";
         checkBingo();
@@ -120,14 +120,14 @@ function checkBingo() {
 
         cells.forEach((cell) => {
             // if (specialNumsList.includes(Number(cell.textContent))) {
-            //     cell.style.color = "#666699";
+            //     cell.style.color = "#4e6d81699";
 
             // }
             (!cell.classList.contains("clicked")) && (cell.appendChild(circle.cloneNode()));
             cell.style.pointerEvents = "none";
 
         });
-        // instruction.style.color = "#666";
+        // instruction.style.color = "#4e6d81";
         resetBtn.style.display = "inline";
         winStatus.innerHTML = "B I N G O !";
         winStatus.style.display = "inline";
