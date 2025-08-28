@@ -40,7 +40,7 @@ body {
 
 #chat-box {
     width: 99%;
-    height: clamp(30%, 60%, 100%);
+    height: clamp(30%, 65%, 100%);
     background-color: #fff;
     border-radius: 25px 25px 0 0;
     overflow: hidden;
@@ -229,7 +229,7 @@ body {
     position: absolute;
 }
 
-#install-btn {
+#install-b {
     height: 40px;
     padding: 5px 15px;
     font-size: 20px;

@@ -240,13 +240,10 @@ function msgUpdaterFunction(msg) {
 export { executerFunction, msgUpdaterFunction, toogleChat };
 
 
-// if ("serviceWorker" in navigator) {
-//     navigator.serviceWorker.register("/service-worker.js");
-// }
 
 let deferredPrompt;
 document.addEventListener("DOMContentLoaded", () => {
-    let installBtn = document.getElementById("install-btn");
+    let installBtn = document.getElementById("install-b");
     // console.log(installBtn);
     installBtn.style.display = "none";
 
