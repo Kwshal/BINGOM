@@ -71,7 +71,7 @@ onValue(resetRef, (snapshot) => {
 onValue(playerRef, (snapshot) => {
     const data = snapshot.val();
     showTurn(data);
-    console.log("playerRef data:", data);
+    // console.log("playerRef data:", data);
 });
 
 export { setNums, setMessage, setChatState, setWinner, resetGame, setPlayer };
