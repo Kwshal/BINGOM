@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
         header.style.backgroundColor = "transparent";
         header.style.color = "white";
         // document.getElementById("edit-svg").style.display = "none";
+
     }
+    init();
 });
 
 resetBtn.addEventListener("click", resetGame);
@@ -48,7 +50,7 @@ function init() {
     turn.style.display = "none";
     header.style.display = "flex";
 }
-init();
+// init();
 
 function shuffle() {
     randomize(cells, randomChars);
