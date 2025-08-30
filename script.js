@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (username != "Nameless") {
         let name = document.getElementById("name");
         name.textContent = username;
-        name.style.backgroundColor = "transparent";
-        name.style.color = "white";
-        header.style.backgroundColor = "transparent";
-        header.style.color = "white";
+        // name.style.backgroundColor = "transparent";
+        // name.style.color = "white";
+        // header.style.backgroundColor = "transparent";
+        // header.style.color = "white";
         // document.getElementById("edit-svg").style.display = "none";
 
     }
@@ -59,7 +59,6 @@ function shuffle() {
 function handleClick() {
     if (!this.classList.contains("clicked")) {
         setNums(this.textContent);
-        checkBingo();
         setPlayer(username);
         turn.style.display = "block";
         header.style.display = "none";
@@ -75,6 +74,8 @@ function syncNums(num) {
             cell.classList.add("clicked");
         }
     });
+    checkBingo();
+
 }
 
 
@@ -178,7 +179,7 @@ function toogleChat(chatState) {
 
 let editSvg = document.getElementById("edit-svg");
 editSvg.addEventListener("click", () => {
-    let header = document.getElementById("header");
+    // let header = document.getElementById("header");
     let name = document.getElementById("name");
     name.contentEditable = true;
     name.focus();
@@ -187,10 +188,10 @@ editSvg.addEventListener("click", () => {
         username = name.textContent.trim() || "Nameless";
         localStorage.setItem("username", username);
         name.textContent = username;
-        editSvg.style.display = "none";
-        header.style.backgroundColor = "transparent";
-        name.style.backgroundColor = "transparent";
-        name.style.color = "white";
+        // editSvg.style.display = "none";
+        // header.style.backgroundColor = "transparent";
+        // name.style.backgroundColor = "transparent";
+        // name.style.color = "white";
     });
 });
 
