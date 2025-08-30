@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // document.getElementById("edit-svg").style.display = "none";
 
     }
-    init();
+    resetGame("init");
+    
 });
 
 resetBtn.addEventListener("click", resetGame);
