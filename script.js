@@ -28,10 +28,13 @@ resetBtn.addEventListener("click", resetGame);
 
 function init() {
     shuffle();
+
     cells.forEach((cell) => {
+        cell.removeEventListener("click", handleClick);
         cell.addEventListener("click", handleClick);
         cell.style.transition = `color ${cell.getAttribute("index") * 0.1}s`;
         cell.style.color = "transparent";
+        cell.querySelector("#circle") && cell.removeChild(cell.querySelector("#circle"));
     });
     setNums("");
     setMessage("");
@@ -44,7 +47,6 @@ function init() {
     winStatus.style.top = "-100%";
     turn.style.display = "none";
     header.style.display = "flex";
-
 }
 init();
 
@@ -229,6 +231,7 @@ function showTurn(player) {
         turn.innerHTML = `Your Turn!`;
         cells.forEach((cell) => cell.style.pointerEvents = "all");
     }
+    console.log("player:", player || "''", "username:", username);
 }
 
 export { syncNums, updateMessages, toogleChat, showWinner, reset, showTurn };
@@ -257,4 +260,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-localStorage.removeItem("username");
+// localStorage.removeItem("username");
