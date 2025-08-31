@@ -63,7 +63,7 @@ function handleClick() {
 
 function syncNums(num) {
     cells.forEach((cell) => {
-        if (cell.textContent == num && !cell.classList.contains("handleClick")) {
+        if (cell.textContent == num && !cell.classList.contains("clicked")) {
             let cross = `<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#4e6d81"></path> </g></svg>`;
             cell.innerHTML = cross;
             cell.classList.add("clicked");
@@ -72,10 +72,6 @@ function syncNums(num) {
     checkBingo();
 
 }
-
-
-
-let iA = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
 function checkBingo() {
     const winPatterns = [
@@ -193,16 +189,19 @@ editSvg.addEventListener("click", () => {
 function sendText(e) {
     if (e.key == "Enter") {
         let text = chatInp.value;
-        text.trim() && setMessage(`<span id="username">${username}</span>: ` + text);
-        console.log(`<span id="username">${username}</span>: ` + text);
+        text.trim() && setMessage(`<span class="username">${username}</span>: ` + text);
+        console.log(`<span class="username">${username}</span>: ` + text);
         chatInp.value = "";
     }
 }
 
 function updateMessages(msg) {
+
     let li = document.createElement("li");
     li.className = "message";
     li.innerHTML = msg;
+    console.log(msg);
+    console.log(li.innerHTML);
     document.getElementById("chat-messages").appendChild(li);
     setMessage("");
 }
@@ -230,7 +229,7 @@ function showTurn(player) {
         cells.forEach((cell) => cell.style.pointerEvents = "all");
     }
     // console.log("player:", player || "''", "username:", username);
-    console.log("triggered showTurn by", player);
+    // console.log("triggered showTurn by", player);
 }
 
 export { syncNums, updateMessages, toogleChat, showWinner, reset, showTurn };
