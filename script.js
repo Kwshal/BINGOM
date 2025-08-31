@@ -214,9 +214,10 @@ function showWinner(winner) {
     } else if (winner && winner != username) {
         winStatus.innerHTML = `${winner} Wins!`;
     }
-    winner && document.querySelectorAll(".cell").forEach((cell) => {
+    cells.forEach((cell) => {
         cell.style.pointerEvents = "none";
     });
+    turn.innerHTML = "Game Over!";
 }
 function showTurn(player) {
     if (player == "") {
