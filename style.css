@@ -80,13 +80,19 @@ body {
 .message {
     height: auto;
     list-style: "none";
-    padding-left: 5px !important;
-    font-size: 25px;
+    /* padding-left: 5px !important; */
+    /* font-size: 25px; */
     font-family: 'Comic Neue', 'Comic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 700;
-    color: #4e6d81;
-    font-variant: small-caps !important;
+    color: #444;
+    /* color: #e76f51; */
+    /* font-variant: small-caps !important; */
     overflow-wrap: break-all;
+}
+
+#username {
+    color: #4e6d81;
+    font-weight: 900;
 }
 
 #util {
@@ -111,7 +117,7 @@ body {
 
     gap: 5px;
     position: absolute;
-    /* padding: 20px; */
+    padding: 5px;
     border-radius: 5px;
     overflow: hidden;
     filter: blur(0px) opacity(1);
@@ -131,7 +137,7 @@ body {
     justify-content: center;
     align-items: center;
     color: transparent;
-    color: #ffdcdc;
+    color: #4e6d81;
     /* text-shadow: 2px 3px 4px #4e6d81; */
     /* box-shadow: 0px 2px 5px #999; */
 
@@ -140,6 +146,10 @@ body {
     /* border-radius: 5px; */
     box-shadow: 0px 2px 3px #585858;
 
+}
+
+.cell:active {
+    box-shadow: 0px 5px 5px #dfdfdf;
 }
 
 #circle {

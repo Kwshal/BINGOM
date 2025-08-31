@@ -16,12 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (username != "Nameless") {
         let name = document.getElementById("name");
         name.textContent = username;
-        // name.style.backgroundColor = "transparent";
-        // name.style.color = "white";
-        // header.style.backgroundColor = "transparent";
-        // header.style.color = "white";
-        // document.getElementById("edit-svg").style.display = "none";
-
     }
     resetGame("init");
     
@@ -132,11 +126,11 @@ function reset() {
 
         cell.style.transition = "none";
         cell.style.pointerEvents = "all";
-        cell.style.color = "#ffdcdc";
+        cell.style.color = "#4e6d81";
         cell.classList.remove("clicked");
     });
     init();
-    winStatus.style.display = "none";
+    // winStatus.style.display = "none";
 }
 
 function randomize(list, randomNum) {
@@ -182,7 +176,7 @@ let editSvg = document.getElementById("edit-svg");
 editSvg.addEventListener("click", () => {
     // let header = document.getElementById("header");
     let name = document.getElementById("name");
-    name.contentEditable = true;
+    // name.contentEditable = true;
     name.focus();
     name.addEventListener("blur", () => {
         // name.contentEditable = false;
@@ -200,13 +194,14 @@ function sendText(e) {
     if (e.key == "Enter") {
         let text = chatInp.value;
         text.trim() && setMessage(`<span id="username">${username}</span>: ` + text);
+        console.log(`<span id="username">${username}</span>: ` + text);
         chatInp.value = "";
     }
 }
 
 function updateMessages(msg) {
     let li = document.createElement("li");
-    li.id = "message";
+    li.className = "message";
     li.innerHTML = msg;
     document.getElementById("chat-messages").appendChild(li);
     setMessage("");
